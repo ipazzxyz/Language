@@ -1,24 +1,24 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
+
+struct TrieVertex {
+  TrieVertex();
+  ~TrieVertex();
+
+  std::vector<TrieVertex *> next;
+  bool is_terminal;
+};
 
 class Trie {
  public:
   Trie();
   ~Trie();
 
-  void insert(const std::string &);
-  bool contains(const std::string &) const;
+  void Insert(const std::string &);
+  bool Contains(const std::string &) const;
 
  private:
-  struct Vertex {
-    Vertex();
-    ~Vertex();
-
-    std::vector<Vertex *> next;
-    bool is_terminal;
-  };
-
-  Vertex* begin;
+  TrieVertex *begin_;
 };

@@ -2,29 +2,31 @@
 
 #include <stdexcept>
 
-Trie::Trie() : begin(new Vertex) {}
-Trie::~Trie() { delete begin; }
+TrieVertex::TrieVertex() : next(256, nullptr), is_terminal(false) {}
 
-Trie::Vertex::Vertex() : next(256, nullptr), is_terminal(false) {}
-Trie::Vertex::~Vertex() {
+TrieVertex::~TrieVertex() {
   for (auto vertex : next) {
     delete vertex;
   }
 }
 
-void Trie::insert(const std::string& s) {
-  auto vertex(begin);
+Trie::Trie() : begin_(new TrieVertex) {}
+
+Trie::~Trie() { delete begin_; }
+
+void Trie::Insert(const std::string& s) {
+  auto vertex(begin_);
   for (char c : s) {
     if (vertex->next[c] == nullptr) {
-      vertex->next[c] = new Vertex;
+      vertex->next[c] = new TrieVertex;
     }
     vertex = vertex->next[c];
   }
   vertex->is_terminal = true;
 }
 
-bool Trie::contains(const std::string& s) const {
-  auto vertex(begin);
+bool Trie::Contains(const std::string& s) const {
+  auto vertex(begin_);
   for (char c : s) {
     if (vertex->next[c] == nullptr) {
       return false;
