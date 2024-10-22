@@ -1,7 +1,5 @@
 #include "trie.hpp"
 
-#include <stdexcept>
-
 TrieVertex::TrieVertex() : next(256, nullptr), is_terminal(false) {}
 
 TrieVertex::~TrieVertex() {
@@ -14,9 +12,9 @@ Trie::Trie() : begin_(new TrieVertex) {}
 
 Trie::~Trie() { delete begin_; }
 
-void Trie::Insert(const std::string& s) {
+void Trie::Insert(const std::string &s) {
   auto vertex(begin_);
-  for (char c : s) {
+  for (auto c : s) {
     if (vertex->next[c] == nullptr) {
       vertex->next[c] = new TrieVertex;
     }
@@ -25,9 +23,9 @@ void Trie::Insert(const std::string& s) {
   vertex->is_terminal = true;
 }
 
-bool Trie::Contains(const std::string& s) const {
+bool Trie::Contains(const std::string &s) const {
   auto vertex(begin_);
-  for (char c : s) {
+  for (auto c : s) {
     if (vertex->next[c] == nullptr) {
       return false;
     }
