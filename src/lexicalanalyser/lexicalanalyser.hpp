@@ -9,10 +9,10 @@ class LexicalAnalyser {
  public:
   LexicalAnalyser();
 
-  void FromFile(const std::string& filename);
-  void FromText(const std::string& text);
+  void FromFile(const std::string &filename);
+  void FromText(const std::string &text);
 
-  const std::vector<Lexeme>& GetLexemes() const;
+  const std::vector<Lexeme> &GetLexemes() const;
 
  private:
   std::string text_;
