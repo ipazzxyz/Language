@@ -6,14 +6,15 @@
 enum class LexemeType {
   kKeyword,
   kIdentifier,
-  kLiteral,
+  kStringLiteral,
+  kNumberLiteral,
   kOperator,
   kPunctuation,
   kComma,
   kDot,
-  kBracketOpen,
-  kBracketClose,
   kDotComma,
+  kRoundBracket,
+  kCurlyBracket,
   kUndefined
 };
 
