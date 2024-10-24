@@ -46,7 +46,7 @@ void LexicalAnalyser::BreakIntoLexemes() {
   lexeme.line = 0;
   std::string line;
   while (++lexeme.line, getline(textbuf, line)) {
-    std::stringstream linebuf(line);
+    std::stringstream linebuf(utility::FormatString(line));
     while (linebuf >> lexeme.text) {
       if (keywords_.Contains(lexeme.text)) {
         lexeme.type = LexemeType::kKeyword;
